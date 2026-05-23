@@ -1,0 +1,210 @@
+@import 'tailwindcss';
+
+/* ============================================
+   DILAN KARAKOÇ — MERKEZI TASARIM SİSTEMİ
+   Tüm renk, font, spacing değerleri burada.
+   Tasarımı değiştirmek = bu bloğu güncellemek.
+   ============================================ */
+
+@theme {
+  /* ---- RENKLER ---- */
+  /* Primary: Bordo — CTA, linkler, ana vurgu */
+  --color-primary: #7B2D42;
+  --color-primary-light: #9B4058;
+  --color-primary-dark: #5E1F31;
+
+  /* Secondary: Lacivert — Başlıklar, navbar, ciddiyet */
+  --color-secondary: #1B2A4A;
+  --color-secondary-light: #2A3D66;
+  --color-secondary-dark: #111C33;
+
+  /* Accent: Sıcak Kahverengi — İkincil aksanlar */
+  --color-accent: #9C7B6B;
+  --color-accent-light: #C4A4A0;
+  --color-accent-dark: #7A5E50;
+
+  /* Nötr / Arka Plan */
+  --color-surface: #FAF7F5;
+  --color-surface-alt: #F0EBE7;
+  --color-surface-dark: #E5DDD7;
+
+  /* Metin */
+  --color-foreground: #1A1F36;
+  --color-foreground-muted: #5C5470;
+  --color-foreground-subtle: #8B8598;
+  --color-foreground-inverse: #FFFFFF;
+
+  /* Kenar / Çizgi */
+  --color-border: #E2DDD8;
+  --color-border-light: #F0EBE7;
+
+  /* ---- TİPOGRAFİ ---- */
+  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+
+  /* ---- SPACING ---- */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+
+  /* ---- BORDER RADIUS ---- */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ---- GÖLGELER ---- */
+  --shadow-sm: 0 1px 2px rgba(26, 31, 54, 0.05);
+  --shadow-md: 0 4px 12px rgba(26, 31, 54, 0.08);
+  --shadow-lg: 0 10px 30px rgba(26, 31, 54, 0.1);
+  --shadow-xl: 0 20px 50px rgba(26, 31, 54, 0.15);
+
+  /* ---- ANİMASYONLAR ---- */
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.6s ease-out forwards;
+  --animate-scale-in: scale-in 0.4s ease-out forwards;
+}
+
+/* Keyframe animasyonları */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   GLOBAL RESET & BASE STİLLER
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-foreground);
+  background-color: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   FOCUS STİLLERİ (Erişilebilirlik)
+   ============================================ */
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   SHARED BUTTON UTILITY CLASSES
+   ============================================ */
+
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.btn-base:active {
+  transform: scale(0.98);
+}
+
+/* Koyu (Dark) Variant: Solid Burgundy background, white text */
+.btn-dark {
+  background-color: var(--color-primary);
+  color: var(--color-foreground-inverse) !important;
+  border: 2px solid var(--color-primary);
+}
+
+.btn-dark:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+/* Açık (Light) Variant: Burgundy text, transparent background, no border by default */
+.btn-light {
+  background-color: transparent;
+  color: var(--color-primary) !important;
+  border: 2px solid transparent;
+}
+
+.btn-light:hover {
+  background-color: transparent;
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Sizing Utilities */
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  border-radius: 1rem;
+}
+
+.btn-md {
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+}
+
+.btn-sm {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  border-radius: 0.75rem;
+}
