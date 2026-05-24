@@ -207,8 +207,12 @@ export default function HakkimdaPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-secondary">
-        <div className="max-w-[1200px] mx-auto px-6 text-center">
+      <section className="py-20 bg-primary relative overflow-hidden text-center">
+        {/* Dekoratif */}
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-white/5 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] rounded-full bg-white/5 blur-3xl" />
+
+        <div className="relative max-w-[1200px] mx-auto px-6">
           <BlurFade>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground-inverse mb-4">
               Birlikte Çalışalım
@@ -218,10 +222,10 @@ export default function HakkimdaPage() {
             </p>
             <Link
               href="/iletisim"
-              className="btn-base btn-lg btn-light"
+              className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-semibold text-base hover:bg-surface hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 active:scale-[0.98] group"
             >
               İletişime Geç
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>

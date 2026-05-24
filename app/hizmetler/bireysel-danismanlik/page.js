@@ -85,10 +85,10 @@ export default function BireyselDanismanlikPage() {
                 <div className="flex flex-wrap gap-4 mt-2">
                   <Link
                     href="/iletisim"
-                    className="btn-base btn-md btn-light"
+                    className="btn-base btn-md btn-light group"
                   >
                     Hemen Randevu Al
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </Link>
@@ -104,22 +104,6 @@ export default function BireyselDanismanlikPage() {
                     alt="Bireysel Danışmanlık"
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-white/20">
-                       <div className="flex items-start gap-4">
-                         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                           <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                           </svg>
-                         </div>
-                         <div>
-                           <p className="font-semibold text-secondary text-base">Güvenli Alan</p>
-                           <p className="text-sm text-foreground-muted mt-1">Yargısız ve destekleyici bir ortamda kendinizi ifade edin.</p>
-                         </div>
-                       </div>
-                    </div>
-                  </div>
                </div>
                
                {/* Görsel arkası dekorasyon */}
@@ -278,10 +262,10 @@ export default function BireyselDanismanlikPage() {
             </p>
             <Link
               href="/iletisim"
-              className="inline-flex items-center gap-2 bg-white text-primary! px-8 py-4 rounded-xl font-semibold text-base hover:bg-surface hover:shadow-xl transition-all duration-300 active:scale-[0.98]"
+              className="inline-flex items-center gap-2 bg-white text-primary! px-8 py-4 rounded-xl font-semibold text-base hover:bg-surface hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 active:scale-[0.98] group"
             >
               Randevu Talebi Oluştur
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
