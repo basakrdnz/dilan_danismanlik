@@ -10,35 +10,42 @@ export const metadata = {
 
 const expertiseAreas = [
   { label: 'Spor Psikolojisi', variant: 'primary' },
-  { label: 'Performans Danışmanlığı', variant: 'primary' },
+  { label: 'Bilişsel Davranışçı Terapi (BDT)', variant: 'primary' },
   { label: 'Bireysel Danışmanlık', variant: 'secondary' },
   { label: 'Ergen Danışmanlığı', variant: 'secondary' },
-  { label: 'Eğitim Koçluğu', variant: 'accent' },
-  { label: 'Kariyer Danışmanlığı', variant: 'accent' },
-  { label: 'Motivasyon ve Hedef Belirleme', variant: 'outline' },
-  { label: 'Stres Yönetimi', variant: 'outline' },
+  { label: 'Çözüm Odaklı Terapi', variant: 'accent' },
+  { label: 'Oyun Terapisi', variant: 'accent' },
+  { label: 'Travma ve Krize Müdahale', variant: 'outline' },
+  { label: 'Cinsel Terapi', variant: 'outline' },
+  { label: 'Sınav Süreci Danışmanlığı', variant: 'primary' },
+  { label: 'Psikolojik İlk Yardım', variant: 'secondary' },
 ];
 
 const timeline = [
   {
-    year: '2016',
-    title: 'Psikoloji Lisans',
-    description: 'İstanbul Üniversitesi Psikoloji bölümünden mezuniyet.',
+    year: '2022',
+    title: 'TED Üniversitesi - PDR Bölümü Mezuniyeti',
+    description: 'TED Üniversitesi Psikolojik Danışmanlık ve Rehberlik Bölümü\'nden mezun oldu.',
   },
   {
-    year: '2018',
-    title: 'Spor Psikolojisi Uzmanlık',
-    description: 'Spor psikolojisi alanında yüksek lisans ve uzmanlık eğitimi.',
+    year: '2022',
+    title: 'Türk PDR Derneği - MMPI Eğitimi',
+    description: 'Türk Psikolojik Danışma ve Rehberlik Derneği bünyesinde MMPI eğitimini tamamladı.',
   },
   {
-    year: '2020',
-    title: 'Danışmanlık Merkezi',
-    description: 'Kendi danışmanlık merkezini kurarak bağımsız çalışmaya başladı.',
+    year: '2023',
+    title: 'Terapi Eğitimleri',
+    description: 'Kısa Süreli Çözüm Odaklı Terapi (Prof. Dr. Özlem Tagay), Oyun Terapisi (Öğr. Gör. Nedim Toker), Travma ve Krize Müdahale, Cinsel Terapi eğitimlerini aldı.',
   },
   {
     year: '2024',
-    title: '500+ Danışan',
-    description: '500\'den fazla danışanla çalışma ve %98 memnuniyet oranı.',
+    title: 'Uzmanlık Gelişimi',
+    description: 'YPA - Bilişsel Davranışçı Terapi, ASBÜ - Sınav Sürecinde Etkili Danışmanlık Becerileri, Sporda Psikolojik Performans Eğitimi ve Psikolojik İlk Yardım eğitimlerini tamamladı.',
+  },
+  {
+    year: '2025',
+    title: '150+ Danışan',
+    description: '150\'den fazla danışanla başarılı bir şekilde çalışma.',
   },
 ];
 
@@ -85,19 +92,19 @@ export default function HakkimdaPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    İstanbul, Türkiye
+                    Ankara, Türkiye
                   </div>
                   <div className="flex items-center gap-3 text-sm text-foreground-muted">
                     <svg className="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    10+ Yıllık Deneyim
+                    5+ Yıllık Deneyim
                   </div>
                   <div className="flex items-center gap-3 text-sm text-foreground-muted">
                     <svg className="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
-                    500+ Danışan
+                    150+ Danışan
                   </div>
                 </div>
               </div>
@@ -110,20 +117,20 @@ export default function HakkimdaPage() {
                 <div className="space-y-4 text-foreground-muted leading-relaxed">
                   <p>
                     Merhaba, ben <strong className="text-foreground">Dilan Karakoç</strong>.
-                    Uzun yıllar boyunca psikoloji ve danışmanlık alanında çalışmalar
-                    yürütmekteyim. Üniversite eğitimimin ardından çeşitli kurum ve
-                    kuruluşlarda danışmanlık hizmeti verdim.
+                    2022 yılında TED Üniversitesi Psikolojik Danışmanlık ve Rehberlik (PDR)
+                    Bölümü&apos;nden mezun oldum. Ankara&apos;da 5 yılı aşkın süredir psikolojik
+                    danışmanlık alanında profesyonel olarak çalışmaktayım.
                   </p>
                   <p>
-                    Spor psikolojisi alanındaki uzmanlığımı, bireysel danışmanlık ve eğitim koçluğu
-                    ile birleştirerek bütüncül bir yaklaşım sunuyorum. Her danışanımın kendine özgü
-                    ihtiyaçlarını anlayarak, kişiye özel çözüm yolları geliştiriyorum.
+                    Bilişsel Davranışçı Terapi, Kısa Süreli Çözüm Odaklı Terapi, Oyun Terapisi,
+                    Travma ve Krize Müdahale ile Cinsel Terapi alanlarında çeşitli eğitimler almış
+                    olup, spor psikolojisi alanındaki uzmanlığımı bireysel danışmanlık ve eğitim
+                    koçluğu ile birleştirerek bütüncül bir yaklaşım sunuyorum.
                   </p>
                   <p>
-                    Akademik çalışmalarımın yanı sıra, sahada edindiğim pratik deneyimler sayesinde
-                    teorik bilgiyi uygulamaya dönüştürme konusunda güçlü bir birikime sahibim.
-                    Danışanlarımla güven, empati ve profesyonellik ilkeleri doğrultusunda çalışmayı
-                    ilke ediniyorum.
+                    150&apos;den fazla danışanla başarılı çalışmalar yürütmüş olmam,
+                    danışanlarımla güven, empati ve profesyonellik ilkeleri doğrultusunda
+                    çalışmayı ilke edinmemden kaynaklanmaktadır.
                   </p>
                 </div>
 

@@ -37,8 +37,8 @@ const testimonials = [
 ];
 
 const achievements = [
-  { value: 500, suffix: '+', label: 'Mutlu Danışan' },
-  { value: 10, suffix: '+', label: 'Yıllık Deneyim' },
+  { value: 150, suffix: '+', label: 'Mutlu Danışan' },
+  { value: 5, suffix: '+', label: 'Yıllık Deneyim' },
   { value: 50, suffix: '+', label: 'Sporcu Danışan' },
   { value: 98, suffix: '%', label: 'Memnuniyet Oranı' },
 ];

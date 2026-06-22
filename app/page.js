@@ -52,8 +52,8 @@ const services = [
 ];
 
 const stats = [
-  { value: 500, suffix: '+', label: 'Mutlu Danışan' },
-  { value: 10, suffix: '+', label: 'Yıllık Deneyim' },
+  { value: 150, suffix: '+', label: 'Mutlu Danışan' },
+  { value: 5, suffix: '+', label: 'Yıllık Deneyim' },
   { value: 50, suffix: '+', label: 'Sporcu Danışan' },
   { value: 98, suffix: '%', label: 'Memnuniyet Oranı' },
 ];
@@ -225,19 +225,20 @@ export default function Anasayfa() {
                 <div className="space-y-4 text-foreground-muted leading-relaxed">
                   <p>
                     Merhaba, ben <strong className="text-foreground">Dilan Karakoç</strong>.
-                    Uzun yıllar boyunca psikoloji ve danışmanlık alanında çalışmalar yürütmekteyim.
-                    Spor psikolojisi alanındaki uzmanlığımı, bireysel danışmanlık ve eğitim koçluğu
-                    ile birleştirerek bütüncül bir yaklaşım sunuyorum.
+                    TED Üniversitesi Psikolojik Danışmanlık ve Rehberlik (PDR) Bölümü mezunuyum.
+                    Ankara&apos;da 5 yılı aşkın süredir psikolojik danışmanlık alanında
+                    profesyonel olarak çalışmaktayım.
                   </p>
                   <p>
-                    Her danışanımın kendine özgü ihtiyaçlarını anlayarak, bilimsel temelli ve
-                    kişiye özel çözüm yolları geliştiriyorum.
+                    Bilişsel Davranışçı Terapi, Çözüm Odaklı Terapi ve Spor Psikolojisi
+                    alanlarındaki uzmanlığımı bireysel danışmanlık ile birleştirerek
+                    bütüncül bir yaklaşım sunuyorum.
                   </p>
                 </div>
 
                 {/* Uzmanlık Alanları */}
                 <div className="flex flex-wrap gap-2 mt-6">
-                  {['Spor Psikolojisi', 'Bireysel Gelişim', 'Eğitim Koçluğu', 'Stres Yönetimi'].map((tag) => (
+                  {['Spor Psikolojisi', 'Bilişsel Davranışçı Terapi', 'Çözüm Odaklı Terapi', 'Travma Müdahale'].map((tag) => (
                     <Badge key={tag} variant="outline" size="sm">
                       {tag}
                     </Badge>
