@@ -11,27 +11,39 @@ export const metadata = {
 
 const testimonials = [
   {
-    name: 'Ahmet Y.',
-    role: 'Profesyonel Sporcu',
-    text: 'Dilan Hanım ile çalışmaya başladığımdan beri performansımda ciddi bir artış gözlemledim. Mental antrenman programı sayesinde yarışma öncesi kaygımı yönetmeyi öğrendim.',
+    name: 'Almina C.',
+    role: 'Öğrenci',
+    text: 'Sınav sürecimde bana verdiğiniz destek, motivasyon ve yol göstericiliğiniz için çok teşekkür ederim. Sayenizde daha düzenli ve bilinçli çalışmayı öğrendim. Her konudaki bilgilerinizle beni yönlendirdiniz. Emekleriniz benim için çok değerli. Gerçekten alanınızda en iyisisiniz.',
     rating: 5,
   },
   {
-    name: 'Elif K.',
-    role: 'Üniversite Öğrencisi',
-    text: 'Eğitim danışmanlığı sürecinde hedeflerimi netleştirdim ve çalışma alışkanlıklarımı tamamen değiştirdim. Sınav sonuçlarımdaki iyileşme inanılmazdı.',
+    name: 'Nisa Nur G.',
+    role: 'Öğrenci',
+    text: 'Hocam öncelikle bana her konuda destek verdiğiniz ve hayatımın bu döneminde bana eşlik ettiğiniz için size ne kadar teşekkür etsem az. Her kararımda beni desteklediniz. Bazen sadece öğretmenim gibi değil, bir arkadaşım gibi de yanımda oldunuz. Zorlandığım zamanlarda beni dinlediniz, motive ettiniz, bana benden daha çok inandınız ve kendime daha çok güvenmemi sağladınız.',
     rating: 5,
   },
   {
-    name: 'Mehmet S.',
-    role: 'İş İnsanı',
-    text: 'Bireysel danışmanlık seansları hayatıma yön verdi. Stres yönetimi ve iş-yaşam dengesini sağlamada büyük ilerleme kaydettim. Herkese tavsiye ederim.',
+    name: 'Kutay Ö.',
+    role: 'Öğrenci',
+    text: 'Her öğrenci gibi benim de çok fazla rehber öğretmenim ve danışmanım oldu; ancak Dilan Hocam kadar beni tanımlayabilen, sınırlarımı anlayabilen ve hayatımı bu kadar düzene sokabilen bir öğretmenim daha önce hiç olmadı. Kendisi sayesinde sadece derslerimde değil, hayatımda da disiplin ve istikrarı yakaladım.',
     rating: 5,
   },
   {
-    name: 'Zeynep A.',
-    role: 'Lise Öğrencisi',
-    text: 'Özel ders paketleri ve eğitim koçluğu sayesinde notlarım yükseldi. Dilan Hanım bana sadece ders değil, hayata bakış açısı da kazandırdı.',
+    name: 'Elif İrem İ.',
+    role: 'Öğrenci',
+    text: 'Dilan Hocamla çalışmaya başlamadan önce hedeflerime ulaşabileceğimden tam olarak emin değildim. Ancak beni çok iyi analiz ederek eksiklerimi ve güçlü yönlerimi doğru şekilde belirledi. Her öğrenciye aynı yöntemi uygulamak yerine, bana özel bir çalışma planı ve yönlendirme hazırlayarak en verimli şekilde ilerlememi sağladı.',
+    rating: 5,
+  },
+  {
+    name: 'Aysima E.',
+    role: 'Öğrenci',
+    text: 'Dilan hoca benim için hiç bir zaman sadece bir hoca olmadı. Kendisi her zaman hem bana hem diğer öğrencilerine bir abla şefkatiyle yaklaştı. Onunla kurduğumuz bağ her zaman gerçekti, şu ana kadar hayatıma etkisi olan nadir öğretmenlerden biri benim için. Bana kattığı her şey için kendisine teşekkür ederim.',
+    rating: 5,
+  },
+  {
+    name: 'Funda E.',
+    role: 'Veli',
+    text: 'Dilan hocam öncelikle kızım için bir abla, arkadaş ve öğretmen oldunuz. Yorulduğu, sıkıldığı anda o tatlı dilinizle hep motive ettiniz. Emeğiniz için sonsuz teşekkürler. İyi ki tanıdık sizi, iyi ki kızımın öğretmeni oldunuz.',
     rating: 5,
   },
 ];

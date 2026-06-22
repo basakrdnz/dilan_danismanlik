@@ -35,27 +35,30 @@ const processSteps = [
 const packages = [
   {
     title: 'Temel Koçluk Paketi',
+    price: '4.000 TL / ay',
     description: 'Akademik planlama ve motivasyon takibine başlamak isteyen öğrenciler için.',
     features: [
       'Ayda 2 Birebir Görüşme (Online veya Yüz yüze)',
-      'Aylık Kişiye Özel Çalışma Programı',
-      'Akademik Hedef Belirleme Desteği',
-      'Temel Kaynak Önerileri ve Takibi',
+      'Deneme Analizi',
+      '2 Haftalık Ders Programı',
+      'Psikolojik Destek',
     ],
   },
   {
     title: 'Standart Sınav Paketi',
+    price: '7.000 TL / ay',
     description: 'LGS, YKS veya okul sınavlarına hazırlanan öğrenciler için yoğun takip.',
     features: [
       'Haftalık Birebir Koçluk Görüşmeleri',
-      'Haftalık Program Güncelleme ve Ödev Takibi',
-      'Sınav Stratejileri ve Kaygı Yönetimi',
+      'Deneme Analizi',
+      '1 Haftalık Ders Programı',
+      'Psikolojik Destek',
       'Aylık Detaylı Veli Bilgilendirme Raporu',
-      'Zaman Yönetimi ve Odaklanma Egzersizleri',
     ],
   },
   {
     title: 'Premium Mentörlük Paketi',
+    price: '9.000 TL / ay',
     description: 'Zirve başarıyı hedefleyen, 7/24 rehberlik ve tam destek isteyen öğrenciler için.',
     features: [
       'Haftalık Detaylı Görüşme + Ara Takipler',
@@ -66,6 +69,7 @@ const packages = [
     ],
   },
 ];
+
 
 export default function EgitimDanismanligiPage() {
   return (
@@ -203,9 +207,10 @@ export default function EgitimDanismanligiPage() {
             {packages.map((pkg, i) => (
               <BlurFade key={pkg.title} delay={i * 0.1}>
                 <Card className="h-full flex flex-col border border-border bg-white p-8 hover:shadow-lg transition-all duration-300">
-                  <h3 className="font-heading text-xl font-bold text-secondary mb-2">
+                  <h3 className="font-heading text-xl font-bold text-secondary mb-1">
                     {pkg.title}
                   </h3>
+                  <p className="text-primary font-bold text-lg mb-2">{pkg.price}</p>
                   <CardDescription className="text-sm mb-6 min-h-[40px]">
                     {pkg.description}
                   </CardDescription>
@@ -228,6 +233,23 @@ export default function EgitimDanismanligiPage() {
               </BlurFade>
             ))}
           </div>
+
+          {/* Veli Görüşmeleri */}
+          <BlurFade>
+            <div className="mt-10 bg-surface-alt rounded-2xl border border-border p-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <div>
+                  <h3 className="font-heading text-lg font-bold text-secondary mb-2">Veli Görüşmeleri</h3>
+                  <p className="text-foreground-muted text-sm leading-relaxed">
+                    Tüm paketlerde <strong className="text-foreground">ayda 2 kez veli görüşmesi</strong> gerçekleştirilmektedir. Öğrencinin durumu ve ihtiyacına göre bu sayı artırılabilmektedir. Her görüşme sonrasında yapılan çalışmaları ve öğrencinin durumunu içeren <strong className="text-foreground">aylık rapor</strong> veliye fiziksel veri olarak iletilir.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </BlurFade>
         </div>
       </section>
 

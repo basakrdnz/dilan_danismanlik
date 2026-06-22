@@ -29,7 +29,7 @@ const sessions = [
   {
     num: '02',
     title: 'Yapılandırılmış Seanslar',
-    desc: 'Bireysel ihtiyaçlarınıza özel planlanan tekniklerle, duygusal farkındalık ve başa çıkma stratejileri geliştiriyoruz. Seanslar ortalama 50 dakika sürer.',
+    desc: 'Bireysel ihtiyaçlarınıza özel planlanan tekniklerle, duygusal farkındalık ve başa çıkma stratejileri geliştiriyoruz. Seanslar ortalama 1 saat sürer.',
   },
   {
     num: '03',
@@ -182,7 +182,45 @@ export default function BireyselDanismanlikPage() {
         </div>
       </section>
 
-      {/* Seans Süreci */}
+      {/* Seans ve Fiyat Bilgisi */}
+      <section className="py-16 bg-white border-b border-border-light">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <BlurFade className="text-center mb-10">
+            <Badge variant="primary" size="sm" className="mb-3">Seans Bilgisi</Badge>
+            <h2 className="font-heading text-2xl font-bold text-secondary">Seans Süresi & Ücreti</h2>
+          </BlurFade>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-surface-alt rounded-xl border border-border p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <p className="font-bold text-secondary text-xl">1 Saat</p>
+              <p className="text-sm text-foreground-muted mt-1">Seans Süresi</p>
+            </div>
+            <div className="bg-surface-alt rounded-xl border border-border p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              </div>
+              <p className="font-bold text-secondary text-xl">Haftada 1</p>
+              <p className="text-sm text-foreground-muted mt-1">Seans Sıklığı</p>
+            </div>
+            <div className="bg-primary/5 rounded-xl border border-primary/20 p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+              </div>
+              <p className="font-bold text-primary text-xl">3.500 TL</p>
+              <p className="text-sm text-foreground-muted mt-1">Yüz Yüze Seans</p>
+            </div>
+            <div className="bg-secondary/5 rounded-xl border border-secondary/20 p-6 text-center">
+              <div className="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center mx-auto mb-3">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </div>
+              <p className="font-bold text-secondary text-xl">3.000 TL</p>
+              <p className="text-sm text-foreground-muted mt-1">Online Seans</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-20 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
           <BlurFade className="text-center mb-14">

@@ -18,17 +18,20 @@ const packages = [
   },
   {
     title: 'Yoğun Sınav Hazırlık Paketi',
-    sessions: 'Haftada 3 Seans',
+    sessions: 'Haftada 2 Seans',
     description: 'Sınav dönemlerinde veya eksik konuları hızla kapatmak isteyen öğrenciler için hazırlanan yoğun program.',
     benefits: ['Hızlı konu tekrarları', 'Yoğun soru çözümü ve analizler', 'Deneme sınavı takipleri', 'Eksik gedik analizleri'],
   },
   {
     title: 'Premium Başarı Paketi',
-    sessions: 'Haftada 5 Seans',
-    description: 'Birden fazla branşta tam destek, düzenli takip ve okul başarısını maksimuma çıkarmayı hedefleyen paket.',
-    benefits: ['Çoklu branş desteği', 'Günlük ödev ve çalışma takibi', 'Veli bilgilendirme raporları', '7/24 mentörlük & soru sorma hakkı'],
+    sessions: 'Haftada 2 Ders + WhatsApp Desteği',
+    description: 'Birden fazla branşta tam destek, düzenli takip ve WhatsApp üzerinden sınırsız soru çözümü.',
+    benefits: ['Haftada 2 birebir ders', 'WhatsApp üzerinden soru çözümü', 'Çoklu branş desteği', 'Düzenli ilerleme takibi'],
   },
 ];
+
+const subjects = ['Fizik', 'Kimya', 'Biyoloji', 'Matematik', 'Geometri', 'Türkçe', 'Edebiyat'];
+
 
 export default function OzelDersPaketleriPage() {
   return (
@@ -50,7 +53,7 @@ export default function OzelDersPaketleriPage() {
         </div>
       </section>
 
-      {/* Genel Bakış & Görsel */}
+      {/* Genel Bakış */}
       <section className="py-20 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -71,18 +74,42 @@ export default function OzelDersPaketleriPage() {
                   </p>
                 </div>
               </BlurFade>
+              {/* Branşlar */}
+              <BlurFade delay={0.3}>
+                <div>
+                  <h3 className="font-semibold text-secondary text-sm mb-3">Verilen Dersler (YKS & LGS)</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {subjects.map((subject) => (
+                      <span key={subject} className="bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-lg">
+                        {subject}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </BlurFade>
             </div>
 
-            {/* Sağ - Görsel */}
+            {/* Sağ - Bilgi Kutusu */}
             <div className="lg:col-span-5">
               <BlurFade delay={0.3}>
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl transform rotate-2 group-hover:rotate-1 transition-transform duration-300" />
-                  <img
-                    src="/images/ozel-ders.png"
-                    alt="Özel Ders Görseli"
-                    className="relative rounded-2xl shadow-md w-full h-auto object-cover border border-border/40"
-                  />
+                <div className="bg-surface-alt rounded-2xl border border-border p-8 space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-secondary text-sm">Partner Eğitmen Kadrosu</p>
+                      <p className="text-xs text-foreground-muted">Alanında deneyimli öğretmenler</p>
+                    </div>
+                  </div>
+                  <p className="text-foreground-muted text-sm leading-relaxed">
+                    Özel ders süreçlerimiz, kendi alanlarında deneyimli <strong className="text-foreground">partner eğitmenler</strong> tarafından yürütülmektedir. Tüm süreç Dilan Karakoç koordinesinde yürütülerek, öğrencinin psikolojik motivasyonu ve ders takibi yakından izlenir.
+                  </p>
+                  <div className="pt-3 border-t border-border">
+                    <p className="text-xs text-foreground-muted italic">
+                      📌 İlk tanışma ve seviye tespit dersi ücretsizdir.
+                    </p>
+                  </div>
                 </div>
               </BlurFade>
             </div>
@@ -90,39 +117,6 @@ export default function OzelDersPaketleriPage() {
         </div>
       </section>
 
-      {/* Fiyatlandırma ve Ön Bilgi */}
-      <section className="py-20 bg-surface-alt">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <BlurFade className="space-y-6">
-              <Badge variant="accent" size="sm">Fiyatlandırma & Bilgi</Badge>
-              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-secondary leading-tight">
-                Her Öğrenci İçin İlk Ders Ücretsiz
-              </h2>
-              <p className="text-foreground-muted leading-relaxed">
-                Fiyatlandırmalarımız seçilen pakete, seans sayılarına ve ders branşlarına göre değişiklik göstermektedir. Öğrencimizle eğitmenimizin uyumunu görmek ve eksikleri analiz etmek için ilk deneme dersini tamamen ücretsiz düzenliyoruz.
-              </p>
-              <div className="inline-block bg-white p-4 rounded-xl border border-border text-xs text-foreground-muted italic shadow-sm">
-                📌 İlk tanışma ve seviye tespit dersi ücretsizdir.
-              </div>
-            </BlurFade>
-
-            <BlurFade delay={0.1}>
-              <div className="bg-white p-8 rounded-2xl border border-border shadow-sm">
-                <h3 className="font-heading text-xl font-bold text-secondary mb-4">
-                  Uzman Eğitmen Kadrosu
-                </h3>
-                <p className="text-foreground-muted leading-relaxed text-sm space-y-4">
-                  Özel ders süreçlerimiz, kendi alanlarında dereceleri ve tecrübeleri olan seçkin partner eğitmen kadromuzla yürütülmektedir. Matematik, Fen Bilimleri, Türkçe ve Yabancı Dil başta olmak üzere tüm branşlarda dersler verilmektedir.
-                </p>
-                <p className="text-foreground-muted leading-relaxed text-sm mt-3">
-                  Süreç Dilan Karakoç koordinesinde yürütülerek, öğrencinin psikolojik motivasyonu ve ders takibi yakından izlenir.
-                </p>
-              </div>
-            </BlurFade>
-          </div>
-        </div>
-      </section>
 
       {/* Paketler */}
       <section className="py-20 bg-white">

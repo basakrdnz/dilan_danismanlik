@@ -25,6 +25,11 @@ const programs = [
     description: 'Takım dinamiklerini güçlendirme, iletişim kanallarını açma ve ortak hedef motivasyonunu artırma çalışmaları.',
     benefits: ['Takım içi iletişim & liderlik', 'Ortak amaç ve hedef birliği', 'Grup aidiyet hissi geliştirme', 'Kriz ve çatışma yönetimi'],
   },
+  {
+    title: 'Performans Kaygısı Danışmanlığı',
+    description: 'Müsabaka, antrenman ve yarışma ortamlarında ortaya çıkan performans kaygısını yönetmek için özel çalışmalar.',
+    benefits: ['Kaygı tetikleyicilerini tanımlama', 'Anında rahatlatma teknikleri', 'Bilişsel yeniden yapılandırma', 'Zihin-beden bütünleşmesi'],
+  },
 ];
 
 const checklist = [
@@ -135,11 +140,20 @@ export default function SporDanismanligiPage() {
             </h2>
             <div className="space-y-4 text-foreground-muted leading-relaxed text-left md:text-center">
               <p>
-                Modern sporda fiziksel ve teknik hazırlık her sporcu için belirli bir standarttadır. Farkı yaratan ise kritik anlarda, baskı altında alınan zihinsel kararlardır. Spor psikolojisi danışmanlığı, bu kritik eşiği yönetmeniz için size rehberlik eder.
+                Modern sporda fiziksel ve teknik hazırlık her sporcu için belirli bir standarttır. Farkı yaratan ise kritik anlarda, baskı altında alınan zihinsel kararlardır. <strong className="text-secondary">Psikoloji</strong> bu noktada devreye girer: Spor psikolojisi danışmanlığı, bu kritik eşiği yönetmeniz için size rehberlik eder.
               </p>
               <p>
-                Danışmanlık sürecimizde, motivasyonunuzu korumayı, müsabaka kaygısını kontrol altına almayı, odaklanma sürenizi uzatmayı ve sakatlık gibi zorlu süreçleri zihinsel olarak hasarsız atlatmayı hedefliyoruz. İster amatör, ister olimpiyat seviyesinde bir profesyonel olun; zihinsel antrenman başarıya giden en güçlü adımdır.
+                Danışmanlık sürecimizde, motivasyonunuzu korumayı, müsabaka kaygısını kontrol altına almayı, odaklanma sürenizi uzatmayı ve sakatlık gibi zorlu süreçleri zihinsel olarak hasarsız atlatmayı hedefliyoruz. <strong className="text-secondary">Psikolojik beceriler</strong> sporcunun en güçlü silahıdır; ister amatör, ister olimpiyat seviyesinde bir profesyonel olun, zihinsel antrenman başarıya giden en güçlü adımdır.
               </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                {['Eskrim', 'Pentatlon', 'Futbol'].map((sport) => (
+                  <span key={sport} className="inline-flex items-center gap-1.5 bg-primary/10 text-primary text-sm font-medium px-4 py-1.5 rounded-full">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    {sport}
+                  </span>
+                ))}
+                <span className="inline-flex items-center gap-1.5 bg-foreground-muted/10 text-foreground-muted text-sm font-medium px-4 py-1.5 rounded-full">+ Diğer Spor Dalları</span>
+              </div>
             </div>
           </BlurFade>
         </div>
@@ -222,7 +236,7 @@ export default function SporDanismanligiPage() {
             </p>
           </BlurFade>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
             {programs.map((prog, i) => (
               <BlurFade key={prog.title} delay={i * 0.1}>
                 <Card className="h-full flex flex-col bg-white border border-border p-8 hover:shadow-lg transition-all duration-300">
@@ -251,6 +265,33 @@ export default function SporDanismanligiPage() {
               </BlurFade>
             ))}
           </div>
+
+          {/* Seans Bilgisi & Fiyat */}
+          <BlurFade>
+            <div className="mt-12 grid sm:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl border border-border p-6 text-center">
+                <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <p className="font-bold text-secondary text-lg">1 Saat</p>
+                <p className="text-sm text-foreground-muted mt-1">Seans Süresi</p>
+              </div>
+              <div className="bg-white rounded-xl border border-border p-6 text-center">
+                <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                </div>
+                <p className="font-bold text-secondary text-lg">Haftada 1</p>
+                <p className="text-sm text-foreground-muted mt-1">Seans Sıklığı (Genel)</p>
+              </div>
+              <div className="bg-white rounded-xl border border-border p-6 text-center">
+                <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <p className="font-bold text-secondary text-lg">3.500 TL</p>
+                <p className="text-sm text-foreground-muted mt-1">Seans Ücret</p>
+              </div>
+            </div>
+          </BlurFade>
         </div>
       </section>
 

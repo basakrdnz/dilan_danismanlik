@@ -35,17 +35,17 @@ const timeline = [
   {
     year: '2023',
     title: 'Terapi Eğitimleri',
-    description: 'Kısa Süreli Çözüm Odaklı Terapi (Prof. Dr. Özlem Tagay), Oyun Terapisi (Öğr. Gör. Nedim Toker), Travma ve Krize Müdahale, Cinsel Terapi eğitimlerini aldı.',
+    description: 'Paradoks Psikoloji bünyesinde Çözüm Odaklı Terapi, Oyun Terapisi ile Travma ve Krize Müdahale eğitimlerini tamamladı.',
   },
   {
     year: '2024',
     title: 'Uzmanlık Gelişimi',
-    description: 'YPA - Bilişsel Davranışçı Terapi, ASBÜ - Sınav Sürecinde Etkili Danışmanlık Becerileri, Sporda Psikolojik Performans Eğitimi ve Psikolojik İlk Yardım eğitimlerini tamamladı.',
+    description: 'YPA - Bilişsel Davranışçı Terapi, ASBÜ - Sınav Süreci Danışmanlığı, Türk PDR Derneği - Sporda Psikolojik Performans ve Psikolojik İlk Yardım eğitimlerini tamamladı.',
   },
   {
     year: '2025',
-    title: '150+ Danışan',
-    description: '150\'den fazla danışanla başarılı bir şekilde çalışma.',
+    title: 'Bilginet Akademi & 150+ Danışan',
+    description: 'Bilginet Akademi Eğitim Danışmanlığı sertifikasını aldı. 150\'den fazla danışanla başarılı bir şekilde çalışmalarını sürdürmektedir.',
   },
 ];
 
@@ -152,7 +152,7 @@ export default function HakkimdaPage() {
                 </h3>
                 <div className="space-y-6">
                   {timeline.map((item, i) => (
-                    <div key={item.year} className="flex gap-4">
+                    <div key={i} className="flex gap-4">
                       <div className="flex flex-col items-center">
                         <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-bold shrink-0">
                           {item.year}
