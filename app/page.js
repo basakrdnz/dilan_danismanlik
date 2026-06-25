@@ -203,13 +203,12 @@ export default function Anasayfa() {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <BlurFade>
               <div className="relative">
-                <div className="w-full aspect-[4/5] bg-gradient-to-br from-primary/10 via-accent-light/20 to-surface-alt rounded-2xl flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-3xl font-heading font-bold text-primary">DK</span>
-                    </div>
-                    <p className="text-sm text-foreground-muted">Danışman fotoğrafı eklenecek</p>
-                  </div>
+                <div className="w-full aspect-[3/4] max-w-[300px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl mx-auto">
+                  <img
+                    src="/images/dilanpp.jpeg"
+                    alt="Dilan Karakoç"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
               </div>
             </BlurFade>

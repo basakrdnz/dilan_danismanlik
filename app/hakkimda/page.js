@@ -76,13 +76,12 @@ export default function HakkimdaPage() {
             {/* Profil Alanı */}
             <BlurFade className="lg:col-span-2">
               <div className="sticky top-32">
-                <div className="w-full aspect-square max-w-[320px] bg-gradient-to-br from-primary/10 via-accent-light/20 to-surface-alt rounded-2xl flex items-center justify-center mx-auto">
-                  <div className="text-center">
-                    <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center border-4 border-white shadow-lg">
-                      <span className="text-3xl font-heading font-bold text-primary">DK</span>
-                    </div>
-                    <p className="text-xs text-foreground-muted">Profil fotoğrafı eklenecek</p>
-                  </div>
+                <div className="w-full aspect-[3/4] max-w-[300px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl mx-auto">
+                  <img
+                    src="/images/dilanpp.jpeg"
+                    alt="Dilan Karakoç"
+                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
 
                 {/* Quick Info */}
