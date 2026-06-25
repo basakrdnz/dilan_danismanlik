@@ -74,7 +74,7 @@ export default function HizmetlerPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-surface-alt pt-28 pb-16 lg:pt-36 lg:pb-24">
+      <section className="pt-28 pb-16 lg:pt-36 lg:pb-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <BlurFade>
             <Badge variant="accent" size="md" className="mb-4">
