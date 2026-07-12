@@ -1,12 +1,20 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BlurFade } from '../../components/magicui/blur-fade';
 import { Badge } from '../../components/ui/badge';
 import { Card, CardTitle, CardDescription } from '../../components/ui/card';
 
 export const metadata = {
-  title: 'Bireysel Yetişkin & Ergen Danışmanlığı | Dilan Karakoç',
+  title: 'Ankara Bireysel Danışmanlık',
   description:
-    'Yetişkin ve ergenler için bireysel psikolojik danışmanlık hizmetleri. Kaygı, stres, özgüven ve kişisel gelişim desteği.',
+    'Ankara\'da yetişkin ve ergenler için bireysel psikolojik danışmanlık hizmetleri. Kaygı, stres, özgüven ve kişisel gelişim desteği. İlk görüşme ücretsiz.',
+  alternates: { canonical: '/hizmetler/bireysel-danismanlik' },
+  openGraph: {
+    title: 'Ankara Bireysel Danışmanlık | Dilan Karakoç',
+    description:
+      'Ankara\'da yetişkin ve ergenler için kaygı, stres, özgüven ve kişisel gelişim odaklı bireysel danışmanlık.',
+    url: '/hizmetler/bireysel-danismanlik',
+  },
 };
 
 const scopeAreas = [
@@ -99,10 +107,13 @@ export default function BireyselDanismanlikPage() {
             {/* Sağ - Görsel */}
             <BlurFade delay={0.3} className="relative mt-8 lg:mt-0">
                <div className="relative z-10 rounded-[2rem] overflow-hidden border border-border/50 shadow-2xl aspect-square lg:aspect-auto lg:h-[500px]">
-                 <img
+                 <Image
                     src="/images/bireysel-danismanlik.png"
-                    alt="Bireysel Danışmanlık"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                    alt="Ankara Bireysel Danışmanlık"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                </div>
                

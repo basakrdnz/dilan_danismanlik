@@ -4,9 +4,16 @@ import { Badge } from '../../components/ui/badge';
 import { Card, CardTitle, CardDescription } from '../../components/ui/card';
 
 export const metadata = {
-  title: 'Özel Ders Paketleri | Dilan Karakoç',
+  title: 'Ankara Özel Ders Paketleri',
   description:
-    'Kişiye özel ders programları ve akademik destek paketleri. Bireysel ihtiyaçlara uygun eğitim çözümleri.',
+    'Ankara\'da YKS ve LGS için birebir özel ders paketleri. Kişiye özel ders programları ve akademik destek ile bireysel ihtiyaçlara uygun eğitim çözümleri.',
+  alternates: { canonical: '/hizmetler/ozel-ders-paketleri' },
+  openGraph: {
+    title: 'Ankara Özel Ders Paketleri | Dilan Karakoç',
+    description:
+      'Ankara\'da YKS ve LGS için birebir özel ders paketleri ve akademik destek çözümleri.',
+    url: '/hizmetler/ozel-ders-paketleri',
+  },
 };
 
 const packages = [

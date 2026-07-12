@@ -5,9 +5,16 @@ import { Badge } from '../components/ui/badge';
 import YorumModal from '../components/YorumFormu';
 
 export const metadata = {
-  title: 'Başarılar & Referanslar | Dilan Karakoç',
+  title: 'Başarılar & Referanslar',
   description:
-    'Dilan Karakoç danışmanlık başarıları, müşteri referansları ve başarı hikayeleri.',
+    'Ankara\'da 150+ danışanın başarı hikayeleri ve referansları. Dilan Karakoç ile bireysel, spor ve eğitim danışmanlığı deneyimleri.',
+  alternates: { canonical: '/basarilar' },
+  openGraph: {
+    title: 'Başarılar & Referanslar | Dilan Karakoç',
+    description:
+      'Ankara\'da 150+ danışanın başarı hikayeleri ve referansları.',
+    url: '/basarilar',
+  },
 };
 
 const testimonials = [

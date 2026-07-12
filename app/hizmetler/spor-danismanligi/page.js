@@ -1,12 +1,20 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BlurFade } from '../../components/magicui/blur-fade';
 import { Badge } from '../../components/ui/badge';
 import { Card, CardTitle, CardDescription } from '../../components/ui/card';
 
 export const metadata = {
-  title: 'Spor, Performans & Psikoloji Danışmanlığı | Dilan Karakoç',
+  title: 'Ankara Spor Psikolojisi Danışmanlığı',
   description:
-    'Sporcuların mental performanslarını artırmak ve hedeflerine ulaşmalarına yardımcı olmak için kapsamlı spor psikolojisi danışmanlık programları.',
+    'Ankara\'da spor psikolojisi danışmanlığı. Sporcuların mental performansını, motivasyonunu ve müsabaka kaygısı yönetimini geliştiren kapsamlı programlar.',
+  alternates: { canonical: '/hizmetler/spor-danismanligi' },
+  openGraph: {
+    title: 'Ankara Spor Psikolojisi Danışmanlığı | Dilan Karakoç',
+    description:
+      'Ankara\'da sporcuların mental performansını artıran spor psikolojisi danışmanlık programları.',
+    url: '/hizmetler/spor-danismanligi',
+  },
 };
 
 const programs = [
@@ -117,10 +125,13 @@ export default function SporDanismanligiPage() {
             {/* Sağ - Görsel */}
             <BlurFade delay={0.3} className="relative mt-8 lg:mt-0">
                <div className="relative z-10 rounded-[2rem] overflow-hidden border border-border/50 shadow-2xl aspect-square lg:aspect-auto lg:h-[500px]">
-                 <img
+                 <Image
                     src="/images/spor-danismanligi.png"
-                    alt="Spor Danışmanlığı"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                    alt="Ankara Spor Psikolojisi Danışmanlığı"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                </div>
                
