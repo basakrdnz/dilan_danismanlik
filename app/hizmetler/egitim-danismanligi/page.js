@@ -1,12 +1,20 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BlurFade } from '../../components/magicui/blur-fade';
 import { Badge } from '../../components/ui/badge';
 import { Card, CardTitle, CardDescription } from '../../components/ui/card';
 
 export const metadata = {
-  title: 'Eğitim Danışmanlığı & Koçluğu | Dilan Karakoç',
+  title: 'Ankara Eğitim Danışmanlığı & Koçluğu',
   description:
-    'Eğitim danışmanlığı ve koçluk hizmetleri. Akademik hedeflerinize ulaşmanız için profesyonel rehberlik.',
+    'Ankara\'da eğitim danışmanlığı ve akademik koçluk hizmetleri. LGS/YKS sınav stratejisi, çalışma planlaması ve hedef belirleme ile başarınızı artırın.',
+  alternates: { canonical: '/hizmetler/egitim-danismanligi' },
+  openGraph: {
+    title: 'Ankara Eğitim Danışmanlığı & Koçluğu | Dilan Karakoç',
+    description:
+      'Ankara\'da LGS/YKS sınav stratejisi ve akademik koçluk ile öğrencilerin başarısını artıran eğitim danışmanlığı.',
+    url: '/hizmetler/egitim-danismanligi',
+  },
 };
 
 const processSteps = [
@@ -124,10 +132,13 @@ export default function EgitimDanismanligiPage() {
             {/* Sağ - Görsel */}
             <BlurFade delay={0.3} className="relative mt-8 lg:mt-0">
                <div className="relative z-10 rounded-[2rem] overflow-hidden border border-border/50 shadow-2xl aspect-square lg:aspect-auto lg:h-[500px]">
-                 <img
+                 <Image
                     src="/images/egitim-danismanligi.png"
-                    alt="Eğitim Danışmanlığı"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                    alt="Ankara Eğitim Danışmanlığı"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                </div>
                

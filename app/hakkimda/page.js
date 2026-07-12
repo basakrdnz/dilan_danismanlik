@@ -1,11 +1,19 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BlurFade } from '../components/magicui/blur-fade';
 import { Badge } from '../components/ui/badge';
 
 export const metadata = {
-  title: 'Hakkımda | Dilan Karakoç',
+  title: 'Hakkımda',
   description:
-    'Dilan Karakoç hakkında. Uzmanlık alanları, biyografi, vizyon ve misyon bilgileri.',
+    'Dilan Karakoç kimdir? TED Üniversitesi PDR mezunu, Ankara\'da 5+ yıllık deneyime sahip psikolojik danışman. Uzmanlık alanları, biyografi ve kariyer yolculuğu.',
+  alternates: { canonical: '/hakkimda' },
+  openGraph: {
+    title: 'Hakkımda | Dilan Karakoç',
+    description:
+      'Ankara\'da 5+ yıllık deneyime sahip psikolojik danışman Dilan Karakoç\'un uzmanlık alanları ve kariyer yolculuğu.',
+    url: '/hakkimda',
+  },
 };
 
 const expertiseAreas = [
@@ -76,11 +84,13 @@ export default function HakkimdaPage() {
             {/* Profil Alanı */}
             <BlurFade className="lg:col-span-2">
               <div className="sticky top-32">
-                <div className="w-full aspect-[3/4] max-w-[300px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl mx-auto">
-                  <img
+                <div className="relative w-full aspect-[3/4] max-w-[300px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl mx-auto">
+                  <Image
                     src="/images/dilanpp.jpeg"
-                    alt="Dilan Karakoç"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                    alt="Dilan Karakoç - Ankara Psikolojik Danışman"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 300px"
+                    className="object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                 </div>
 
