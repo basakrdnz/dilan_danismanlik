@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { BlurFade } from '../components/magicui/blur-fade';
 import { NumberTicker } from '../components/magicui/number-ticker';
 import { Badge } from '../components/ui/badge';
+import YorumModal from '../components/YorumFormu';
 
 export const metadata = {
   title: 'Başarılar & Referanslar | Dilan Karakoç',
@@ -44,6 +45,18 @@ const testimonials = [
     name: 'Funda E.',
     role: 'Veli',
     text: 'Dilan hocam öncelikle kızım için bir abla, arkadaş ve öğretmen oldunuz. Yorulduğu, sıkıldığı anda o tatlı dilinizle hep motive ettiniz. Emeğiniz için sonsuz teşekkürler. İyi ki tanıdık sizi, iyi ki kızımın öğretmeni oldunuz.',
+    rating: 5,
+  },
+  {
+    name: 'İlsu Akar',
+    role: 'Öğrenci',
+    text: 'YKS sürecinde Dilan Hoca ile yaklaşık bir yıl çalıştım ve bu süreç benim için gerçekten çok verimli geçti. Bana özel hazırladığı, her günü detaylı planlanmış çalışma programları sayesinde düzenli bir şekilde ilerleyebildim. Programları hem benim isteklerimi dikkate alarak hazırladı hem de konuları en doğru sırayla çalışmamı sağladı. Yaklaşık üç dört ay gibi kısa bir sürede netlerimde 30 netlik bir artış yakaladım. Akademik desteğinin yanı sıra, stres yönetimi konusunda da bana çok yardımcı oldu. Süreç boyunca her konuda rahatça konuşabildiğim, beni yargılamadan dinleyen ve her zaman çözüm odaklı yaklaşan bir rehberdi. Genç olması sayesinde bizi ve yaşadığımız süreci çok iyi anlayabiliyor, bu da iletişimi çok daha samimi ve güçlü kılıyor. Disiplinli, ilgili ve her zaman ulaşılabilir olması sayesinde kendimi bu zorlu süreçte hiç yalnız hissetmedim. YKS hazırlığında sadece akademik değil, psikolojik olarak da destek arayan herkese gönül rahatlığıyla tavsiye ederim.',
+    rating: 5,
+  },
+  {
+    name: 'Merve Yıldırım',
+    role: 'Öğrenci',
+    text: 'Bu süreci benimle beraber beni anlayarak geçirdiniz. Bir yıl boyunca bıkmadan, yorulmadan verdiğiniz emekler, sadece bir öğretmen olarak değil, her zaman arkamda hissettiğim o güçlü desteğiniz benim için çok kıymetli. Ne zaman çıkmaza girsem, güler yüzünüz ve samimiyetinizle bana her zaman doğru yolu gösterdiniz. Emekleriniz, sabrınız ve bana kattığınız her şey için sonsuz teşekkür ederim.',
     rating: 5,
   },
 ];
@@ -108,16 +121,21 @@ export default function BasarilarPage() {
       <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <BlurFade>
-            <div className="text-center mb-14">
-              <Badge variant="accent" size="md" className="mb-4">
-                Referanslar
-              </Badge>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-secondary mb-4">
-                Danışan Yorumları
-              </h2>
-              <p className="text-foreground-muted text-lg max-w-xl mx-auto">
-                Danışanlarımızın deneyimlerinden bazıları.
-              </p>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14">
+              <div>
+                <Badge variant="accent" size="md" className="mb-4">
+                  Referanslar
+                </Badge>
+                <h2 className="font-heading text-3xl sm:text-4xl font-bold text-secondary mb-2">
+                  Danışan Yorumları
+                </h2>
+                <p className="text-foreground-muted text-lg max-w-xl">
+                  Danışanlarımızın deneyimlerinden bazıları.
+                </p>
+              </div>
+              <div className="shrink-0">
+                <YorumModal />
+              </div>
             </div>
           </BlurFade>
 
@@ -195,6 +213,7 @@ export default function BasarilarPage() {
           </div>
         </div>
       </section>
+
 
       {/* CTA */}
       <section className="py-20 bg-primary">
