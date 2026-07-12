@@ -2,10 +2,8 @@ import { Resend } from 'resend';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Gönderilmiş mailleri saklayan dosyanın yolu
-const DB_PATH = join(process.cwd(), 'data', 'yorum-mailler.json');
+// Vercel gibi serverless ortamlarda yazılabilen tek yer /tmp dizinidir
+const DB_PATH = join('/tmp', 'yorum-mailler.json');
 
 function getSubmittedEmails() {
   try {
@@ -18,18 +16,26 @@ function getSubmittedEmails() {
 }
 
 function saveEmail(email) {
-  const emails = getSubmittedEmails();
-  emails.push(email.toLowerCase());
-  const dir = join(process.cwd(), 'data');
-  if (!existsSync(dir)) {
-    const { mkdirSync } = require('fs');
-    mkdirSync(dir, { recursive: true });
+  try {
+    const emails = getSubmittedEmails();
+    emails.push(email.toLowerCase());
+    writeFileSync(DB_PATH, JSON.stringify(emails, null, 2), 'utf-8');
+  } catch (err) {
+    console.error('Dosya yazma hatası (es geçiliyor):', err);
   }
-  writeFileSync(DB_PATH, JSON.stringify(emails, null, 2), 'utf-8');
 }
 
 export async function POST(request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is not defined in environment variables.');
+      return Response.json(
+        { error: 'E-posta servisi yapılandırılmamış.' },
+        { status: 500 }
+      );
+    }
+
     const body = await request.json();
     const { ad, soyad, email, yorum } = body;
 
@@ -66,6 +72,9 @@ export async function POST(request) {
         { status: 409 }
       );
     }
+
+    // Resend nesnesini sadece talep geldiğinde oluşturuyoruz
+    const resend = new Resend(apiKey);
 
     const { error } = await resend.emails.send({
       from: 'Dilan Danışmanlık <onboarding@resend.dev>',

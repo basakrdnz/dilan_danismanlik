@@ -261,7 +261,7 @@ export default function YorumModal() {
             </div>
           </div>
         </div>
-      , document.body)}
+        , document.body)}
     </>
   );
 }
