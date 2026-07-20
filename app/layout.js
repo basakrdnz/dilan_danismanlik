@@ -120,6 +120,23 @@ const jsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr" className={`${sans.variable} ${heading.variable}`}>
+      <head>
+        {/* Google Ads Global Site Tag */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18334855740"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18334855740');
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col font-sans">
         <script
           type="application/ld+json"
