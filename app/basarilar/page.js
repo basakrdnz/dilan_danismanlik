@@ -49,7 +49,6 @@ export default async function BasarilarPage() {
   const kvYorumlar = await getKVYorumlar();
   const onayliKV = kvYorumlar.filter((y) => y.onaylandi === true);
   const yorumlar = [...seedYorumlar, ...onayliKV];
-  console.log('--- DEBUG: yorumlar.length =', yorumlar.length);
 
   return (
     <>

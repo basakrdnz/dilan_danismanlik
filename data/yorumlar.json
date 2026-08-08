@@ -1,0 +1,90 @@
+[
+  {
+    "id": "seed-1",
+    "ad": "Almina",
+    "soyad": "C.",
+    "email": "seed.1@dilandanismanlik.local",
+    "yorum": "Sınav sürecimde bana verdiğiniz destek, motivasyon ve yol göstericiliğiniz için çok teşekkür ederim. Sayenizde daha düzenli ve bilinçli çalışmayı öğrendim. Her konudaki bilgilerinizle beni yönlendirdiniz. Emekleriniz benim için çok değerli. Gerçekten alanınızda en iyisisiniz.",
+    "rating": 5,
+    "role": "Öğrenci",
+    "tarih": "2025-01-01T00:00:00.000Z",
+    "onaylandi": true
+  },
+  {
+    "id": "seed-2",
+    "ad": "Nisa Nur",
+    "soyad": "G.",
+    "email": "seed.2@dilandanismanlik.local",
+    "yorum": "Hocam öncelikle bana her konuda destek verdiğiniz ve hayatımın bu döneminde bana eşlik ettiğiniz için size ne kadar teşekkür etsem az. Her kararımda beni desteklediniz. Bazen sadece öğretmenim gibi değil, bir arkadaşım gibi de yanımda oldunuz. Zorlandığım zamanlarda beni dinlediniz, motive ettiniz, bana benden daha çok inandınız ve kendime daha çok güvenmemi sağladınız.",
+    "rating": 5,
+    "role": "Öğrenci",
+    "tarih": "2025-01-02T00:00:00.000Z",
+    "onaylandi": true
+  },
+  {
+    "id": "seed-3",
+    "ad": "Kutay",
+    "soyad": "Ö.",
+    "email": "seed.3@dilandanismanlik.local",
+    "yorum": "Her öğrenci gibi benim de çok fazla rehber öğretmenim ve danışmanım oldu; ancak Dilan Hocam kadar beni tanımlayabilen, sınırlarımı anlayabilen ve hayatımı bu kadar düzene sokabilen bir öğretmenim daha önce hiç olmadı. Kendisi sayesinde sadece derslerimde değil, hayatımda da disiplin ve istikrarı yakaladım.",
+    "rating": 5,
+    "role": "Öğrenci",
+    "tarih": "2025-01-03T00:00:00.000Z",
+    "onaylandi": true
+  },
+  {
+    "id": "seed-4",
+    "ad": "Elif İrem",
+    "soyad": "İ.",
+    "email": "seed.4@dilandanismanlik.local",
+    "yorum": "Dilan Hocamla çalışmaya başlamadan önce hedeflerime ulaşabileceğimden tam olarak emin değildim. Ancak beni çok iyi analiz ederek eksiklerimi ve güçlü yönlerimi doğru şekilde belirledi. Her öğrenciye aynı yöntemi uygulamak yerine, bana özel bir çalışma planı ve yönlendirme hazırlayarak en verimli şekilde ilerlememi sağladı.",
+    "rating": 5,
+    "role": "Öğrenci",
+    "tarih": "2025-01-04T00:00:00.000Z",
+    "onaylandi": true
+  },
+  {
+    "id": "seed-5",
+    "ad": "Aysima",
+    "soyad": "E.",
+    "email": "seed.5@dilandanismanlik.local",
+    "yorum": "Dilan hoca benim için hiç bir zaman sadece bir hoca olmadı. Kendisi her zaman hem bana hem diğer öğrencilerine bir abla şefkatiyle yaklaştı. Onunla kurduğumuz bağ her zaman gerçekti, şu ana kadar hayatıma etkisi olan nadir öğretmenlerden biri benim için. Bana kattığı her şey için kendisine teşekkür ederim.",
+    "rating": 5,
+    "role": "Öğrenci",
+    "tarih": "2025-01-05T00:00:00.000Z",
+    "onaylandi": true
+  },
+  {
+    "id": "seed-6",
+    "ad": "Funda",
+    "soyad": "E.",
+    "email": "seed.6@dilandanismanlik.local",
+    "yorum": "Dilan hocam öncelikle kızım için bir abla, arkadaş ve öğretmen oldunuz. Yorulduğu, sıkıldığı anda o tatlı dilinizle hep motive ettiniz. Emeğiniz için sonsuz teşekkürler. İyi ki tanıdık sizi, iyi ki kızımın öğretmeni oldunuz.",
+    "rating": 5,
+    "role": "Veli",
+    "tarih": "2025-01-06T00:00:00.000Z",
+    "onaylandi": true
+  },
+  {
+    "id": "seed-7",
+    "ad": "İlsu",
+    "soyad": "Akar",
+    "email": "seed.7@dilandanismanlik.local",
+    "yorum": "YKS sürecinde Dilan Hoca ile yaklaşık bir yıl çalıştım ve bu süreç benim için gerçekten çok verimli geçti. Bana özel hazırladığı, her günü detaylı planlanmış çalışma programları sayesinde düzenli bir şekilde ilerleyebildim. Programları hem benim isteklerimi dikkate alarak hazırladı hem de konuları en doğru sırayla çalışmamı sağladı. Yaklaşık üç dört ay gibi kısa bir sürede netlerimde 30 netlik bir artış yakaladım. Akademik desteğinin yanı sıra, stres yönetimi konusunda da bana çok yardımcı oldu. Süreç boyunca her konuda rahatça konuşabildiğim, beni yargılamadan dinleyen ve her zaman çözüm odaklı yaklaşan bir rehberdi. Genç olması sayesinde bizi ve yaşadığımız süreci çok iyi anlayabiliyor, bu da iletişimi çok daha samimi ve güçlü kılıyor. Disiplinli, ilgili ve her zaman ulaşılabilir olması sayesinde kendimi bu zorlu süreçte hiç yalnız hissetmedim. YKS hazırlığında sadece akademik değil, psikolojik olarak da destek arayan herkese gönül rahatlığıyla tavsiye ederim.",
+    "rating": 5,
+    "role": "Öğrenci",
+    "tarih": "2025-01-07T00:00:00.000Z",
+    "onaylandi": true
+  },
+  {
+    "id": "seed-8",
+    "ad": "Merve",
+    "soyad": "Yıldırım",
+    "email": "seed.8@dilandanismanlik.local",
+    "yorum": "Bu süreci benimle beraber beni anlayarak geçirdiniz. Bir yıl boyunca bıkmadan, yorulmadan verdiğiniz emekler, sadece bir öğretmen olarak değil, her zaman arkamda hissettiğim o güçlü desteğiniz benim için çok kıymetli. Ne zaman çıkmaza girsem, güler yüzünüz ve samimiyetinizle bana her zaman doğru yolu gösterdiniz. Emekleriniz, sabrınız ve bana kattığınız her şey için sonsuz teşekkür ederim.",
+    "rating": 5,
+    "role": "Öğrenci",
+    "tarih": "2025-01-08T00:00:00.000Z",
+    "onaylandi": true
+  }
+]
