@@ -111,7 +111,7 @@ export default function YorumModal() {
                   Deneyimini Paylaş
                 </h2>
                 <p className="text-xs text-slate-400 mt-0.5">
-                  Yorumun onaylandıktan sonra yayımlanacak
+                  Deneyimini diğer danışanlarla paylaş
                 </p>
               </div>
               <button
@@ -136,10 +136,10 @@ export default function YorumModal() {
                     </svg>
                   </div>
                   <h3 className="font-heading text-2xl font-bold text-slate-800 mb-2">
-                    Yorumunuz Alındı!
+                    Yorumunuz Yayımlandı!
                   </h3>
                   <p className="text-slate-500 text-sm leading-relaxed max-w-[300px]">
-                    Teşekkürler! Yorumunuz incelendikten sonra onaylanarak bu sayfada yayımlanacak.
+                    Teşekkürler! Yorumunuz başarıyla kaydedildi ve sayfada yayımlandı.
                   </p>
                   <button
                     onClick={close}
@@ -254,7 +254,7 @@ export default function YorumModal() {
                   </button>
 
                   <p className="text-center text-xs text-slate-400">
-                    Yorumunuz moderasyon sürecinden geçtikten sonra yayımlanacaktır.
+                    Yorumunuz anında yayımlanacaktır.
                   </p>
                 </form>
               )}

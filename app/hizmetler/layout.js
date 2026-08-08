@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { siteConfig } from '@/lib/seo-config';
 
 const breadcrumbMap = {
   '/hizmetler': 'Hizmetler',
@@ -23,8 +24,26 @@ function Breadcrumb() {
     return { href, label, isLast };
   });
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Anasayfa', item: siteConfig.url },
+      ...crumbs.map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 2,
+        name: crumb.label,
+        item: `${siteConfig.url}${crumb.href}`,
+      })),
+    ],
+  };
+
   return (
     <nav aria-label="Breadcrumb" className="py-3">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <ol className="flex items-center gap-2 list-none text-sm text-foreground-subtle">
         <li>
           <Link href="/" className="hover:text-primary transition-colors">

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
@@ -65,9 +66,12 @@ export default function Navbar() {
           className="flex items-center gap-1 hover:scale-[1.02] transition-transform select-none"
           onClick={closeMobileMenu}
         >
-          <img
+          <Image
             src="/images/dilan_logo.png"
             alt="Dilan Danışmanlık"
+            width={459}
+            height={396}
+            priority
             style={{
               height: '42px',
               width: 'auto',

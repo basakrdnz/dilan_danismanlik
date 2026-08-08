@@ -4,9 +4,16 @@ import { Badge } from '../components/ui/badge';
 import { Card, CardTitle, CardDescription, CardFooter } from '../components/ui/card';
 
 export const metadata = {
-  title: 'Hizmetler | Dilan Karakoç',
+  title: 'Ankara Danışmanlık Hizmetleri',
   description:
-    'Dilan Karakoç danışmanlık hizmetleri. Spor danışmanlığı, bireysel danışmanlık, eğitim danışmanlığı ve özel ders paketleri.',
+    'Ankara\'da spor danışmanlığı, bireysel danışmanlık, eğitim danışmanlığı ve özel ders paketleri. İhtiyacınıza uygun profesyonel danışmanlık programlarını keşfedin.',
+  alternates: { canonical: '/hizmetler' },
+  openGraph: {
+    title: 'Ankara Danışmanlık Hizmetleri | Dilan Karakoç',
+    description:
+      'Ankara\'da spor danışmanlığı, bireysel danışmanlık, eğitim danışmanlığı ve özel ders paketleri.',
+    url: '/hizmetler',
+  },
 };
 
 const services = [

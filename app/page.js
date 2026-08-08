@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BlurFade } from './components/magicui/blur-fade';
 import { NumberTicker } from './components/magicui/number-ticker';
 import { Card, CardTitle, CardDescription, CardFooter } from './components/ui/card';
@@ -83,7 +84,11 @@ export default function Anasayfa() {
         <div className="relative w-full max-w-[1200px] mx-auto px-6 pt-32 pb-20 lg:pt-40 lg:pb-28 z-10">
           <div className="max-w-2xl flex flex-col gap-6 lg:gap-8">
             <div className="flex flex-col gap-3">
-
+              <BlurFade delay={0.1}>
+                <Badge variant="primary" size="md" className="w-fit">
+                  Ankara&apos;da Profesyonel Danışmanlık
+                </Badge>
+              </BlurFade>
 
               <BlurFade delay={0.2}>
                 <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-light text-secondary leading-[1.15] tracking-tight">
@@ -95,8 +100,8 @@ export default function Anasayfa() {
 
             <BlurFade delay={0.3}>
               <p className="text-lg sm:text-xl text-foreground-muted leading-relaxed font-normal max-w-xl">
-                Bireysel danışmanlık, spor psikolojisi ve eğitim koçluğu alanlarında
-                uzman desteğiyle hayatınıza yeni bir yön verin. İlk görüşme{' '}
+                Ankara&apos;da bireysel danışmanlık, spor psikolojisi ve eğitim koçluğu
+                alanlarında uzman desteğiyle hayatınıza yeni bir yön verin. İlk görüşme{' '}
                 <strong className="text-primary font-bold">ücretsizdir</strong>.
               </p>
             </BlurFade>
@@ -203,11 +208,13 @@ export default function Anasayfa() {
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <BlurFade>
               <div className="relative">
-                <div className="w-full aspect-[3/4] max-w-[300px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl mx-auto">
-                  <img
+                <div className="relative w-full aspect-[3/4] max-w-[300px] rounded-2xl overflow-hidden border border-border/50 shadow-2xl mx-auto">
+                  <Image
                     src="/images/dilanpp.jpeg"
-                    alt="Dilan Karakoç"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                    alt="Dilan Karakoç - Ankara Psikolojik Danışman"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 300px"
+                    className="object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                 </div>
               </div>

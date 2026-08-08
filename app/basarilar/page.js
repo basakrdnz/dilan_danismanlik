@@ -1,65 +1,39 @@
 import Link from 'next/link';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { BlurFade } from '../components/magicui/blur-fade';
 import { NumberTicker } from '../components/magicui/number-ticker';
 import { Badge } from '../components/ui/badge';
 import YorumModal from '../components/YorumFormu';
+import GallerySection from './GallerySection';
+import { getKVYorumlar } from '../../lib/redis';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'Başarılar & Referanslar | Dilan Karakoç',
+  title: 'Başarılar & Referanslar',
   description:
-    'Dilan Karakoç danışmanlık başarıları, müşteri referansları ve başarı hikayeleri.',
+    'Ankara\'da 150+ danışanın başarı hikayeleri ve referansları. Dilan Karakoç ile bireysel, spor ve eğitim danışmanlığı deneyimleri.',
+  alternates: { canonical: '/basarilar' },
+  openGraph: {
+    title: 'Başarılar & Referanslar | Dilan Karakoç',
+    description:
+      'Ankara\'da 150+ danışanın başarı hikayeleri ve referansları.',
+    url: '/basarilar',
+  },
 };
 
-const testimonials = [
-  {
-    name: 'Almina C.',
-    role: 'Öğrenci',
-    text: 'Sınav sürecimde bana verdiğiniz destek, motivasyon ve yol göstericiliğiniz için çok teşekkür ederim. Sayenizde daha düzenli ve bilinçli çalışmayı öğrendim. Her konudaki bilgilerinizle beni yönlendirdiniz. Emekleriniz benim için çok değerli. Gerçekten alanınızda en iyisisiniz.',
-    rating: 5,
-  },
-  {
-    name: 'Nisa Nur G.',
-    role: 'Öğrenci',
-    text: 'Hocam öncelikle bana her konuda destek verdiğiniz ve hayatımın bu döneminde bana eşlik ettiğiniz için size ne kadar teşekkür etsem az. Her kararımda beni desteklediniz. Bazen sadece öğretmenim gibi değil, bir arkadaşım gibi de yanımda oldunuz. Zorlandığım zamanlarda beni dinlediniz, motive ettiniz, bana benden daha çok inandınız ve kendime daha çok güvenmemi sağladınız.',
-    rating: 5,
-  },
-  {
-    name: 'Kutay Ö.',
-    role: 'Öğrenci',
-    text: 'Her öğrenci gibi benim de çok fazla rehber öğretmenim ve danışmanım oldu; ancak Dilan Hocam kadar beni tanımlayabilen, sınırlarımı anlayabilen ve hayatımı bu kadar düzene sokabilen bir öğretmenim daha önce hiç olmadı. Kendisi sayesinde sadece derslerimde değil, hayatımda da disiplin ve istikrarı yakaladım.',
-    rating: 5,
-  },
-  {
-    name: 'Elif İrem İ.',
-    role: 'Öğrenci',
-    text: 'Dilan Hocamla çalışmaya başlamadan önce hedeflerime ulaşabileceğimden tam olarak emin değildim. Ancak beni çok iyi analiz ederek eksiklerimi ve güçlü yönlerimi doğru şekilde belirledi. Her öğrenciye aynı yöntemi uygulamak yerine, bana özel bir çalışma planı ve yönlendirme hazırlayarak en verimli şekilde ilerlememi sağladı.',
-    rating: 5,
-  },
-  {
-    name: 'Aysima E.',
-    role: 'Öğrenci',
-    text: 'Dilan hoca benim için hiç bir zaman sadece bir hoca olmadı. Kendisi her zaman hem bana hem diğer öğrencilerine bir abla şefkatiyle yaklaştı. Onunla kurduğumuz bağ her zaman gerçekti, şu ana kadar hayatıma etkisi olan nadir öğretmenlerden biri benim için. Bana kattığı her şey için kendisine teşekkür ederim.',
-    rating: 5,
-  },
-  {
-    name: 'Funda E.',
-    role: 'Veli',
-    text: 'Dilan hocam öncelikle kızım için bir abla, arkadaş ve öğretmen oldunuz. Yorulduğu, sıkıldığı anda o tatlı dilinizle hep motive ettiniz. Emeğiniz için sonsuz teşekkürler. İyi ki tanıdık sizi, iyi ki kızımın öğretmeni oldunuz.',
-    rating: 5,
-  },
-  {
-    name: 'İlsu Akar',
-    role: 'Öğrenci',
-    text: 'YKS sürecinde Dilan Hoca ile yaklaşık bir yıl çalıştım ve bu süreç benim için gerçekten çok verimli geçti. Bana özel hazırladığı, her günü detaylı planlanmış çalışma programları sayesinde düzenli bir şekilde ilerleyebildim. Programları hem benim isteklerimi dikkate alarak hazırladı hem de konuları en doğru sırayla çalışmamı sağladı. Yaklaşık üç dört ay gibi kısa bir sürede netlerimde 30 netlik bir artış yakaladım. Akademik desteğinin yanı sıra, stres yönetimi konusunda da bana çok yardımcı oldu. Süreç boyunca her konuda rahatça konuşabildiğim, beni yargılamadan dinleyen ve her zaman çözüm odaklı yaklaşan bir rehberdi. Genç olması sayesinde bizi ve yaşadığımız süreci çok iyi anlayabiliyor, bu da iletişimi çok daha samimi ve güçlü kılıyor. Disiplinli, ilgili ve her zaman ulaşılabilir olması sayesinde kendimi bu zorlu süreçte hiç yalnız hissetmedim. YKS hazırlığında sadece akademik değil, psikolojik olarak da destek arayan herkese gönül rahatlığıyla tavsiye ederim.',
-    rating: 5,
-  },
-  {
-    name: 'Merve Yıldırım',
-    role: 'Öğrenci',
-    text: 'Bu süreci benimle beraber beni anlayarak geçirdiniz. Bir yıl boyunca bıkmadan, yorulmadan verdiğiniz emekler, sadece bir öğretmen olarak değil, her zaman arkamda hissettiğim o güçlü desteğiniz benim için çok kıymetli. Ne zaman çıkmaza girsem, güler yüzünüz ve samimiyetinizle bana her zaman doğru yolu gösterdiniz. Emekleriniz, sabrınız ve bana kattığınız her şey için sonsuz teşekkür ederim.',
-    rating: 5,
-  },
-];
+// Seed verisi: proje dosyasındaki mevcut yorumlar (her zaman mevcut)
+function getSeedYorumlar() {
+  try {
+    const filePath = join(process.cwd(), 'data', 'yorumlar.json');
+    const raw = readFileSync(filePath, 'utf-8');
+    const all = JSON.parse(raw);
+    return all.filter((y) => y.onaylandi === true);
+  } catch {
+    return [];
+  }
+}
 
 const achievements = [
   { value: 150, suffix: '+', label: 'Mutlu Danışan' },
@@ -68,7 +42,13 @@ const achievements = [
   { value: 98, suffix: '%', label: 'Memnuniyet Oranı' },
 ];
 
-export default function BasarilarPage() {
+export default async function BasarilarPage() {
+  // Seed (JSON dosyası) + KV (Redis) yorumlarını birleştir
+  const seedYorumlar = getSeedYorumlar();
+  const kvYorumlar = await getKVYorumlar();
+  const onayliKV = kvYorumlar.filter((y) => y.onaylandi === true);
+  const yorumlar = [...seedYorumlar, ...onayliKV];
+
   return (
     <>
       {/* Hero */}
@@ -140,8 +120,8 @@ export default function BasarilarPage() {
           </BlurFade>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            {testimonials.map((testimonial, i) => (
-              <BlurFade key={testimonial.name} delay={0.1 * i}>
+            {yorumlar.map((testimonial, i) => (
+              <BlurFade key={testimonial.id} delay={0.1 * Math.min(i, 5)}>
                 <div className="bg-white rounded-xl border border-border p-8 h-full flex flex-col hover:shadow-lg transition-all duration-300">
                   {/* Yıldızlar */}
                   <div className="flex gap-1 mb-4">
@@ -155,7 +135,7 @@ export default function BasarilarPage() {
                   {/* Yorum */}
                   <blockquote className="flex-1">
                     <p className="text-foreground-muted leading-relaxed italic">
-                      &ldquo;{testimonial.text}&rdquo;
+                      &ldquo;{testimonial.yorum}&rdquo;
                     </p>
                   </blockquote>
 
@@ -163,11 +143,11 @@ export default function BasarilarPage() {
                   <div className="mt-6 pt-4 border-t border-border flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                       <span className="text-sm font-bold text-primary">
-                        {testimonial.name.charAt(0)}
+                        {testimonial.ad.charAt(0)}
                       </span>
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground text-sm">{testimonial.name}</p>
+                      <p className="font-semibold text-foreground text-sm">{testimonial.ad} {testimonial.soyad}</p>
                       <p className="text-xs text-foreground-muted">{testimonial.role}</p>
                     </div>
                   </div>
@@ -178,41 +158,9 @@ export default function BasarilarPage() {
         </div>
       </section>
 
-      {/* Galeri Placeholder */}
-      <section className="py-20 bg-surface-alt">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <BlurFade>
-            <div className="text-center mb-14">
-              <Badge variant="secondary" size="md" className="mb-4">
-                Galeri
-              </Badge>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-secondary mb-4">
-                Etkinlikler & Çalışmalar
-              </h2>
-              <p className="text-foreground-muted text-lg max-w-xl mx-auto">
-                Etkinlikler, seminerler ve çalışmalardan kareler.
-              </p>
-            </div>
-          </BlurFade>
+      {/* Galeri Bölümü */}
+      <GallerySection />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {['Seminer', 'Workshop', 'Danışmanlık', 'Eğitim', 'Konferans', 'Takım Çalışması'].map((label, i) => (
-              <BlurFade key={label} delay={0.08 * i}>
-                <div className="aspect-[3/2] bg-gradient-to-br from-surface-dark to-surface-alt rounded-xl flex items-center justify-center group cursor-pointer hover:shadow-md transition-all duration-300 overflow-hidden">
-                  <div className="text-center">
-                    <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <svg className="w-5 h-5 text-primary group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <p className="text-xs text-foreground-muted font-medium">{label}</p>
-                  </div>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
 
 
       {/* CTA */}

@@ -1,41 +1,25 @@
-import { Resend } from 'resend';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync } from 'fs';
 import { join } from 'path';
+import { getKVYorumlar, saveYorumToKV } from '../../../lib/redis';
 
-// Vercel gibi serverless ortamlarda yazılabilen tek yer /tmp dizinidir
-const DB_PATH = join('/tmp', 'yorum-mailler.json');
-
-function getSubmittedEmails() {
+// Seed verisi (JSON dosyasındaki mevcut yorumlar) — sadece e-posta kontrolü için
+function getSeedEmails() {
   try {
-    if (!existsSync(DB_PATH)) return [];
-    const raw = readFileSync(DB_PATH, 'utf-8');
-    return JSON.parse(raw);
+    const filePath = join(process.cwd(), 'data', 'yorumlar.json');
+    const raw = readFileSync(filePath, 'utf-8');
+    const data = JSON.parse(raw);
+    return data.map((y) => y.email.toLowerCase());
   } catch {
     return [];
   }
 }
 
-function saveEmail(email) {
-  try {
-    const emails = getSubmittedEmails();
-    emails.push(email.toLowerCase());
-    writeFileSync(DB_PATH, JSON.stringify(emails, null, 2), 'utf-8');
-  } catch (err) {
-    console.error('Dosya yazma hatası (es geçiliyor):', err);
-  }
+function generateId() {
+  return `yorum-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 }
 
 export async function POST(request) {
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error('RESEND_API_KEY is not defined in environment variables.');
-      return Response.json(
-        { error: 'E-posta servisi yapılandırılmamış.' },
-        { status: 500 }
-      );
-    }
-
     const body = await request.json();
     const { ad, soyad, email, yorum } = body;
 
@@ -64,68 +48,56 @@ export async function POST(request) {
       );
     }
 
-    // Aynı mail tekrar gönderim kontrolü
-    const submittedEmails = getSubmittedEmails();
-    if (submittedEmails.includes(email.toLowerCase())) {
+    const normalizedEmail = email.trim().toLowerCase();
+
+    // Seed verisinde aynı email var mı?
+    const seedEmails = getSeedEmails();
+    if (seedEmails.includes(normalizedEmail)) {
       return Response.json(
         { error: 'Bu e-posta adresiyle daha önce yorum gönderilmiş.' },
         { status: 409 }
       );
     }
 
-    // Resend nesnesini sadece talep geldiğinde oluşturuyoruz
-    const resend = new Resend(apiKey);
-
-    const { error } = await resend.emails.send({
-      from: 'Dilan Danışmanlık <onboarding@resend.dev>',
-      to: ['basak.karadeniz0@gmail.com'],
-      subject: `📝 Yeni Yorum Talebi — ${ad} ${soyad}`,
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #f9fafb; border-radius: 12px;">
-          <h2 style="color: #1e3a5f; margin-bottom: 4px;">Yeni Yorum Talebi</h2>
-          <p style="color: #6b7280; margin-top: 0; font-size: 14px;">Sitenden yeni bir yorum gönderildi. Onaylarsan ekleyebiliriz.</p>
-          
-          <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
-
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr>
-              <td style="padding: 10px 0; color: #374151; font-weight: 600; width: 120px;">Ad Soyad</td>
-              <td style="padding: 10px 0; color: #111827;">${ad} ${soyad}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #374151; font-weight: 600;">E-posta</td>
-              <td style="padding: 10px 0; color: #111827;">${email}</td>
-            </tr>
-          </table>
-
-          <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
-
-          <p style="color: #374151; font-weight: 600; margin-bottom: 8px;">Yorum:</p>
-          <div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; color: #111827; line-height: 1.7;">
-            "${yorum}"
-          </div>
-
-          <p style="color: #9ca3af; font-size: 12px; margin-top: 24px; text-align: center;">
-            Bu e-posta dilan-danismanlik.com sitesindeki yorum formu aracılığıyla gönderildi.
-          </p>
-        </div>
-      `,
-    });
-
-    if (error) {
-      console.error('Resend error:', error);
+    // KV'deki yorumlarda aynı email var mı?
+    const kvYorumlar = await getKVYorumlar();
+    const kvEmailKullanilmis = kvYorumlar.some(
+      (y) => y.email === normalizedEmail
+    );
+    if (kvEmailKullanilmis) {
       return Response.json(
-        { error: 'E-posta gönderilemedi. Lütfen tekrar deneyin.' },
-        { status: 500 }
+        { error: 'Bu e-posta adresiyle daha önce yorum gönderilmiş.' },
+        { status: 409 }
       );
     }
 
-    // Başarılıysa maili kaydet
-    saveEmail(email);
+    // Yeni yorumu oluştur ve kaydet
+    const yeniYorum = {
+      id: generateId(),
+      ad: ad.trim(),
+      soyad: soyad.trim(),
+      email: normalizedEmail,
+      yorum: yorum.trim(),
+      rating: 5,
+      role: 'Danışan',
+      tarih: new Date().toISOString(),
+      onaylandi: true,
+    };
+
+    await saveYorumToKV(yeniYorum);
 
     return Response.json({ success: true });
   } catch (err) {
     console.error('API route error:', err);
+
+    // Redis yapılandırılmamışsa özel mesaj
+    if (err.message === 'Redis yapılandırılmamış.') {
+      return Response.json(
+        { error: 'Yorum sistemi henüz yapılandırılmamış. Lütfen daha sonra tekrar deneyin.' },
+        { status: 503 }
+      );
+    }
+
     return Response.json(
       { error: 'Sunucu hatası oluştu.' },
       { status: 500 }
