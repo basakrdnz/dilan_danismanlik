@@ -75,7 +75,21 @@ export default function IletisimPage() {
       `- Konu: ${formData.subject}\n\n` +
       `Mesaj:\n${formData.message}`
     );
-    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    const waUrl = `https://wa.me/${phone}?text=${text}`;
+
+    // Google Ads Conversion Tracking
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18334855740/Rn15CO-eiNMcELzk3qZE',
+        value: 1.0,
+        currency: 'TRY',
+        event_callback: () => {
+          window.open(waUrl, '_blank');
+        },
+      });
+    } else {
+      window.open(waUrl, '_blank');
+    }
   };
 
   return (
