@@ -30,7 +30,8 @@ function getSeedYorumlar() {
     const raw = readFileSync(filePath, 'utf-8');
     const all = JSON.parse(raw);
     return all.filter((y) => y.onaylandi === true);
-  } catch {
+  } catch (err) {
+    console.error('getSeedYorumlar error:', err);
     return [];
   }
 }
@@ -48,6 +49,7 @@ export default async function BasarilarPage() {
   const kvYorumlar = await getKVYorumlar();
   const onayliKV = kvYorumlar.filter((y) => y.onaylandi === true);
   const yorumlar = [...seedYorumlar, ...onayliKV];
+  console.log('--- DEBUG: yorumlar.length =', yorumlar.length);
 
   return (
     <>
@@ -121,38 +123,36 @@ export default async function BasarilarPage() {
 
           <div className="grid sm:grid-cols-2 gap-6">
             {yorumlar.map((testimonial, i) => (
-              <BlurFade key={testimonial.id} delay={0.1 * Math.min(i, 5)}>
-                <div className="bg-white rounded-xl border border-border p-8 h-full flex flex-col hover:shadow-lg transition-all duration-300">
-                  {/* Yıldızlar */}
-                  <div className="flex gap-1 mb-4">
-                    {Array.from({ length: testimonial.rating }).map((_, j) => (
-                      <svg key={j} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
+              <div key={testimonial.id} className="bg-white rounded-xl border border-border p-8 h-full flex flex-col hover:shadow-lg transition-all duration-300">
+                {/* Yıldızlar */}
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: testimonial.rating }).map((_, j) => (
+                    <svg key={j} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {/* Yorum */}
+                <blockquote className="flex-1">
+                  <p className="text-foreground-muted leading-relaxed italic">
+                    &ldquo;{testimonial.yorum}&rdquo;
+                  </p>
+                </blockquote>
+
+                {/* Kişi Bilgisi */}
+                <div className="mt-6 pt-4 border-t border-border flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-sm font-bold text-primary">
+                      {testimonial.ad.charAt(0)}
+                    </span>
                   </div>
-
-                  {/* Yorum */}
-                  <blockquote className="flex-1">
-                    <p className="text-foreground-muted leading-relaxed italic">
-                      &ldquo;{testimonial.yorum}&rdquo;
-                    </p>
-                  </blockquote>
-
-                  {/* Kişi Bilgisi */}
-                  <div className="mt-6 pt-4 border-t border-border flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-sm font-bold text-primary">
-                        {testimonial.ad.charAt(0)}
-                      </span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground text-sm">{testimonial.ad} {testimonial.soyad}</p>
-                      <p className="text-xs text-foreground-muted">{testimonial.role}</p>
-                    </div>
+                  <div>
+                    <p className="font-semibold text-foreground text-sm">{testimonial.ad} {testimonial.soyad}</p>
+                    <p className="text-xs text-foreground-muted">{testimonial.role}</p>
                   </div>
                 </div>
-              </BlurFade>
+              </div>
             ))}
           </div>
         </div>
