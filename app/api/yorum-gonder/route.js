@@ -1,6 +1,12 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { getKVYorumlar, saveYorumToKV } from '../../../lib/redis';
+import { getKVYorumlar, saveYorumToKV, deleteYorumFromKV } from '../../../lib/redis';
+
+function yetkiliMi(request) {
+  const secret = process.env.YORUM_ADMIN_SECRET;
+  if (!secret) return false;
+  return request.headers.get('x-admin-secret') === secret;
+}
 
 // Seed verisi (JSON dosyasındaki mevcut yorumlar) — sadece e-posta kontrolü için
 function getSeedEmails() {
@@ -102,5 +108,38 @@ export async function POST(request) {
       { error: 'Sunucu hatası oluştu.' },
       { status: 500 }
     );
+  }
+}
+
+// Yönetim: KV'deki yorumları listeler (id'leri görmek için).
+export async function GET(request) {
+  if (!yetkiliMi(request)) {
+    return Response.json({ error: 'Yetkisiz.' }, { status: 401 });
+  }
+
+  const kvYorumlar = await getKVYorumlar();
+  return Response.json({ yorumlar: kvYorumlar });
+}
+
+// Yönetim: id'si verilen yorumu KV'den siler.
+export async function DELETE(request) {
+  if (!yetkiliMi(request)) {
+    return Response.json({ error: 'Yetkisiz.' }, { status: 401 });
+  }
+
+  const id = new URL(request.url).searchParams.get('id');
+  if (!id) {
+    return Response.json({ error: 'id parametresi gerekli.' }, { status: 400 });
+  }
+
+  try {
+    const silindi = await deleteYorumFromKV(id);
+    if (!silindi) {
+      return Response.json({ error: 'Bu id ile bir yorum bulunamadı.' }, { status: 404 });
+    }
+    return Response.json({ success: true });
+  } catch (err) {
+    console.error('API route DELETE error:', err);
+    return Response.json({ error: 'Sunucu hatası oluştu.' }, { status: 500 });
   }
 }
